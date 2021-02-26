@@ -15,11 +15,16 @@ terraform {
 #   resource_group_name = "${var.k8s_cluster_node_resource_group}"
 # }
 
+resource "azurerm_resource_group" "acr_rg" {
+    name     = "${lower(var.project_name)}-${var.container_registry_resource_group_suffix}"
+    location = var.location
+}
+
 resource "azurerm_container_registry" "acr" {
   # alpha numeric characters only are allowed
   name                     = "${lower(var.project_name)}${var.container_registry_name_suffix}"
-  resource_group_name      = "${lower(var.project_name)}-${var.container_registry_resource_group_suffix}"
-  location                 = var.location
+  resource_group_name      = azurerm_resource_group.acr_rg.name
+  location                 = azurerm_resource_group.acr_rg.location
   sku                      = "Standard"
   admin_enabled            = false
 }
