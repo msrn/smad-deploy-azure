@@ -18,13 +18,13 @@ module "k8s_cluster_azure" {
     project_name = local.project_name
 }
 
-module "container_registry_for_k8s" {
+/* module "container_registry_for_k8s" {
     source = "./modules/container_registry"
     container_registry_resource_group_suffix = var.container_registry_resource_group_suffix
     project_name = local.project_name
     k8s_cluster_node_resource_group = module.k8s_cluster_azure.k8s_cluster_node_resource_group
     k8s_cluster_kubelet_managed_identity_id = module.k8s_cluster_azure.kubelet_object_id
-}
+} */
 
 terraform {
 
