@@ -52,7 +52,7 @@ jobs:
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       id: fmt
-      run: terraform fmt -check
+      run: terraform fmt -recursive -check -list=true
       continue-on-error: true
 
     # Generates an execution plan for Terraform
