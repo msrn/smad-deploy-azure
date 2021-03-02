@@ -53,13 +53,13 @@ jobs:
     - name: Terraform Format
       id: fmt
       run: terraform fmt -recursive -check -list=true
-      continue-on-error: true
+      #continue-on-error: true
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       id: plan
       run: terraform plan
-      continue-on-error: true
+      #continue-on-error: true
       
     # TODO
     # Make a better output
